@@ -18,6 +18,7 @@ class NotesApp extends React.Component {
         this.searchHandler = this.searchHandler.bind(this);
         this.isArchiveHandler = this.isArchiveHandler.bind(this);
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
+        this.addNewNoteHandler = this.addNewNoteHandler.bind(this);
     }
 
     searchHandler(search) {
@@ -30,6 +31,27 @@ class NotesApp extends React.Component {
             this.setState({
                 dataNotes: this.state.filteredNotes,
             })
+        }
+    }
+
+    addNewNoteHandler(newNoteData) {
+        try {
+            this.setState((prevState) => {
+                return {
+                    dataNotes: [newNoteData, ...prevState.dataNotes,],
+                    filteredNotes: [newNoteData, ...prevState.filteredNotes,]
+                }
+            })
+            return {
+                error: false,
+                message: 'Success!'
+            }
+        }
+        catch (error) {
+            return {
+                error: true,
+                message: 'Failed!'
+            }
         }
     }
 
@@ -102,7 +124,7 @@ class NotesApp extends React.Component {
         return (
             <div>
                 <Header searching={this.searchHandler} />
-                <Content notes={this.state.dataNotes} isArchived={this.isArchiveHandler} onDelete={this.onDeleteHandler} />
+                <Content notes={this.state.dataNotes} addNewNote={this.addNewNoteHandler} isArchived={this.isArchiveHandler} onDelete={this.onDeleteHandler} />
                 <ToastContainer
                     position="bottom-right"
                     autoClose={5000}

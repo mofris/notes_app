@@ -5,6 +5,7 @@ import DescInput from "./DescInput";
 import AddButton from "./AddButton";
 
 const Form = ({ formData, onTitleChange, onDescChange, onSubmitForm }) => {
+    console.log(formData.noteDescLength)
     return (
         <form onSubmit={onSubmitForm}>
             <Limit limit={formData.noteDescLength} />

@@ -12,7 +12,6 @@ const AddNote = ({ addNewNote }) => {
     });
 
     const onTitleChange = (event) => {
-        console.log(event.target.value)
         event.preventDefault();
         setFormData({
             ...formData,
@@ -21,7 +20,6 @@ const AddNote = ({ addNewNote }) => {
     }
 
     const onDescChange = (event) => {
-        console.log(event.target.value)
         event.preventDefault();
         if (event.target.value.length <= 50) {
             setFormData({
@@ -46,6 +44,12 @@ const AddNote = ({ addNewNote }) => {
                 title: 'Oops...',
                 text: 'Mohon data diisi semua ya!'
             })
+        } else if (formData.noteDesc.length <= 50) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Tulisan tidak boleh lebih dari 50 karakter!'
+            })
         } else {
             const newData = {
                 id: +new Date(),
@@ -60,8 +64,8 @@ const AddNote = ({ addNewNote }) => {
                 setFormData({
                     ...formData,
                     title: '',
-                    noteBody: '',
-                    noteBodyLength: 0
+                    noteDesc: '',
+                    noteDescLength: 0
                 })
             } else {
                 toast.error('Gagal Menambahkan Catatan, Silahkan Mencoba Kembali');

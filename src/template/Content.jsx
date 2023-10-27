@@ -2,7 +2,9 @@ import React from "react";
 import NotesList from "../components/NotesList";
 import AddNote from "../components/AddNote";
 
-const Content = ({ notes, isArchived, onDelete, addNewNote }) => {
+const Content = ({ notes, addNewNote, isArchived, onDelete }) => {
+    // console.log(notes)
+    // console.log(addNotes)
     return (
         <div className="note-app__body">
             <AddNote addNewNote={addNewNote} />
