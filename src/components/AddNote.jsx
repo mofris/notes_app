@@ -38,17 +38,12 @@ const AddNote = ({ addNewNote }) => {
 
     const onSubmitForm = (event) => {
         event.preventDefault();
+        console.log((formData.noteDesc.length <= 50))
         if (formData.title === '' || formData.noteDesc === '') {
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops...',
                 text: 'Mohon data diisi semua ya!'
-            })
-        } else if (formData.noteDesc.length <= 50) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Tulisan tidak boleh lebih dari 50 karakter!'
             })
         } else {
             const newData = {
@@ -75,7 +70,7 @@ const AddNote = ({ addNewNote }) => {
 
     return (
         <div className="note-input">
-            <h2>New Note</h2>
+            <h2>Add Note</h2>
             <Form
                 formData={formData}
                 onTitleChange={onTitleChange}
