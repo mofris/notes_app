@@ -78,8 +78,8 @@ class NotesApp extends React.Component {
     onDeleteHandler(id) {
         console.log(id)
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Apakah Anda Yakin?',
+            text: "Catatan akan dihapus!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -93,7 +93,7 @@ class NotesApp extends React.Component {
                         filteredNotes: data.filteredNotes.filter(note => note.id !== id),
                     }
                 })
-                toast.success('Note berhasil dihapus!');
+                toast.success('Catatan berhasil dihapus!');
             }
         });
     }
