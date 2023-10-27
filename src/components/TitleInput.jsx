@@ -7,7 +7,6 @@ const TitleInput = ({ formData, onTitleChange }) => {
             type="text"
             name="title"
             placeholder="Title"
-            required
             value={formData.title}
             onChange={onTitleChange}
         />

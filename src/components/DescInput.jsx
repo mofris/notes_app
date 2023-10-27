@@ -7,7 +7,6 @@ const DescInput = ({ formData, onDescChange }) => {
             type="text"
             name="noteDesc"
             placeholder="Your notes here ..."
-            required
             value={formData.noteDesc}
             onChange={onDescChange}
         ></textarea>

@@ -6,11 +6,11 @@ import AddButton from "./AddButton";
 
 const Form = ({ formData, onTitleChange, onDescChange, onSubmitForm }) => {
     return (
-        <form>
+        <form onSubmit={onSubmitForm}>
             <Limit limit={formData.noteDescLength} />
             <TitleInput formData={formData} onTitleChange={onTitleChange} />
             <DescInput formData={formData} onDescChange={onDescChange} />
-            <AddButton onClick={onSubmitForm} />
+            <AddButton />
         </form>
     );
 };

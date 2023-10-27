@@ -4,7 +4,7 @@ import Form from './Form';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 
-const AddNote = ({ addNewNote, closeModal }) => {
+const AddNote = ({ addNewNote }) => {
     const [formData, setFormData] = useState({
         title: '',
         noteDesc: '',
@@ -12,6 +12,7 @@ const AddNote = ({ addNewNote, closeModal }) => {
     });
 
     const onTitleChange = (event) => {
+        console.log(event.target.value)
         event.preventDefault();
         setFormData({
             ...formData,
@@ -20,6 +21,7 @@ const AddNote = ({ addNewNote, closeModal }) => {
     }
 
     const onDescChange = (event) => {
+        console.log(event.target.value)
         event.preventDefault();
         if (event.target.value.length <= 50) {
             setFormData({
@@ -31,14 +33,14 @@ const AddNote = ({ addNewNote, closeModal }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!'
+                text: 'Tulisan tidak boleh lebih dari 50 karakter!'
             })
         }
     }
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        if (formData.title === '' || formData.noteBody === '') {
+        if (formData.title === '' || formData.noteDesc === '') {
             Swal.fire({
                 icon: 'warning',
                 title: 'Oops...',
@@ -48,7 +50,7 @@ const AddNote = ({ addNewNote, closeModal }) => {
             const newData = {
                 id: +new Date(),
                 title: formData.title,
-                body: formData.noteBody,
+                body: formData.noteDesc,
                 archived: false,
                 createdAt: new Date(),
             }
@@ -61,7 +63,6 @@ const AddNote = ({ addNewNote, closeModal }) => {
                     noteBody: '',
                     noteBodyLength: 0
                 })
-                closeModal();
             } else {
                 toast.error('Gagal Menambahkan Catatan, Silahkan Mencoba Kembali');
             }
