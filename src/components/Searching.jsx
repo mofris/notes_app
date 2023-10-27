@@ -10,7 +10,7 @@ const Searching = ({ searching }) => {
         <div className="note-search">
             <input
                 type="text"
-                placeholder="Search for notes..."
+                placeholder="Searching notes..."
                 onChange={searchingChange}
             />
         </div>
